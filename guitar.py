@@ -34,7 +34,7 @@ if __name__ == '__main__':
                     if key == x:
                         keyList[keyboard.index(x)].freq().pluck()
 
-                        print(keyboard.index(x))                    # to check if the index corresponds to the correct index
+                        print(keyboard.index(x))                    # to check if the key pressed corresponds to the correct index
                         print(keyList[keyboard.index(x)].freq())    # to check if the freq method works
 
         sample = 0
