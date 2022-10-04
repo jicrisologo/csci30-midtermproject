@@ -79,6 +79,9 @@ class RingBuffer: #this can definitely still be optimized :(
         '''
         Return (but do not delete) item from the front
         '''
+        if self.size() == 0:
+            raise RingBufferEmpty
+        
         return self.data[self.tail]
 
 
