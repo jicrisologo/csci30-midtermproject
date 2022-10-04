@@ -6,12 +6,22 @@ class GuitarString:
         Create a guitar string of the given frequency, using a sampling rate of 24000 Hz
         '''
         # TO-DO: implement this
+        self.capacity = # TO-DO: the max capacity of the ring buffer based on the frequency
+        self.buffer =   # TO-DO: construct the ring buffer object
 
-    def make_from_array(self, init: list[int]):
+    @classmethod
+    def make_from_array(cls, init: list[int]):
         '''
         Create a guitar string whose size and initial values are given by the array `init`
         '''
-        # TO-DO: implement this
+        # create GuitarString object with placeholder freq
+        stg = cls(1000)
+
+        stg.capacity = len(init)
+        stg.buffer = RingBuffer(stg.capacity)
+        for x in init:
+            stg.buffer.enqueue(x)
+        return stg
 
     def pluck(self):
         '''

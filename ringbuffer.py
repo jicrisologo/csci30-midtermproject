@@ -6,6 +6,8 @@ class RingBuffer:
         Create an empty ring buffer, with given max capacity
         '''
         # TO-DO: implement this
+        # UPDATE: for consistency, also have an attribute "self.MAX_CAP" to store the max capacity
+        self.MAX_CAP = capacity
 
     def size(self) -> int:
         '''
