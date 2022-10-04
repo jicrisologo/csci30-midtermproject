@@ -1,49 +1,88 @@
 #!/usr/bin/env python3
 
-class RingBuffer:
+class RingBuffer: #this can definitely still be optimized :(
     def __init__(self, capacity: int):
         '''
         Create an empty ring buffer, with given max capacity
         '''
-        # TO-DO: implement this
-        # UPDATE: for consistency, also have an attribute "self.MAX_CAP" to store the max capacity
-        self.MAX_CAP = capacity
+        
+        self.data = [None] * capacity
+        self.head = 0 #insertion point
+        self.tail = 0 #deletion point
+        
+        self.MAX_CAP = capacity # UPDATE: for consistency, also have an attribute "self.MAX_CAP" to store the max capacity
 
-    def size(self) -> int:
+
+    def size(self) -> int: 
         '''
         Return number of items currently in the buffer
         '''
-        # TO-DO: implement this
+        items = 0
+        for x in self.data:
+            if x is not None:
+                items += 1
+        return items
+
 
     def is_empty(self) -> bool:
         '''
         Is the buffer empty (size equals zero)?
         '''
-        # TO-DO: implement this
+        for x in self.data:
+            if x is not None:
+                return False
+        return True
+
         
     def is_full(self) -> bool:
         '''
         Is the buffer full (size equals capacity)?
         '''
-        # TO-DO: implement this
+        if self.size() == self.MAX_CAP:
+            return True
+        else:
+            return False
+
 
     def enqueue(self, x: float):
         '''
         Add item `x` to the end
         '''
-        # TO-DO: implement this
+        if self.size() == self.MAX_CAP:
+            raise RingBufferFull
+        
+        self.data[self.head] = x
+        
+        self.head += 1
+        if self.head == self.MAX_CAP:
+            self.head = 0
+
 
     def dequeue(self) -> float:
         '''
         Return and remove item from the front
         '''
-        # TO-DO: implement this
+        if self.size() == 0:
+            raise RingBufferEmpty
+        
+        popped = self.data[self.tail]
+        self.data[self.tail] = None
+        
+        self.tail += 1
+        if self.tail == self.MAX_CAP:
+            self.tail = 0
+
+        return popped
+
 
     def peek(self) -> float:
         '''
         Return (but do not delete) item from the front
         '''
-        # TO-DO: implement this
+        return self.data[self.tail]
+
+
+
 
 
 class RingBufferFull(Exception):
