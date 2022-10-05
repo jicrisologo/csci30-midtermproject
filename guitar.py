@@ -9,7 +9,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode((width, height))
 
 
-    class Keys:
+    class GuitarStrings:
         def __init__(self, y: int):
             self.y = y
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     keyboard = "q2we4r5ty7u8i9op"
 
     for i in range(16):
-        keyList.append(Keys(i))
+        keyList.append(GuitarStrings(i))
 
     while True:
         for event in pygame.event.get():
