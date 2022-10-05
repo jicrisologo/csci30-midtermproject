@@ -30,16 +30,15 @@ if __name__ == '__main__':
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 key = event.unicode
-                for x in keyboard:
-                    if key == x:
-                        keyList[keyboard.index(x)].freq().pluck()
+                if key in keyboard:
+                    keyList[keyboard.index(key)].freq().pluck()
 
-                        print(keyboard.index(x))                    # to check if the key pressed corresponds to the correct index
-                        print(keyList[keyboard.index(x)].freq())    # to check if the freq() method works
+                    print(keyboard.index(key))                    # to check if the key pressed corresponds to the correct index
+                    print(keyList[keyboard.index(key)].freq())    # to check if the freq() method works
 
         sample = 0
-        for key in keyList:
-            sample += key.freq().sample()
+        for s in keyList:
+            sample += s.freq().sample()
         play_sample(sample)
 
         for x in keyList:
