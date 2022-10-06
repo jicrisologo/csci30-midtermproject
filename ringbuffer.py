@@ -12,16 +12,14 @@ class RingBuffer: #this can definitely still be optimized :(
         
         self.MAX_CAP = capacity # UPDATE: for consistency, also have an attribute "self.MAX_CAP" to store the max capacity
 
+        self.items = 0
+
 
     def size(self) -> int: 
         '''
         Return number of items currently in the buffer
         '''
-        items = 0
-        for x in self.data:
-            if x is not None:
-                items += 1
-        return items
+        return self.items
 
 
     def is_empty(self) -> bool:
@@ -57,6 +55,8 @@ class RingBuffer: #this can definitely still be optimized :(
         if self.head == self.MAX_CAP:
             self.head = 0
 
+        self.items += 1
+
 
     def dequeue(self) -> float:
         '''
@@ -71,6 +71,8 @@ class RingBuffer: #this can definitely still be optimized :(
         self.tail += 1
         if self.tail == self.MAX_CAP:
             self.tail = 0
+
+        self.items -= 1
 
         return popped
 

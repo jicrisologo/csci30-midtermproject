@@ -17,7 +17,7 @@ if __name__ == '__main__':
     keyList = []
     keyboard = "q2we4r5ty7u8i9op"
 
-    for i in range(16):
+    for i in range( len(keyboard) ):
         keyList.append(GuitarStrings(i))
 
     while True:
