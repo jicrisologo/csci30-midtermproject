@@ -5,10 +5,11 @@ import math #idk if this is allowed
 import random #idk if this is allowed
 
 
-ENERGY_DECAY_FACTOR = 0.996 #temporary, remove whenever this isnt needed anymore
 
 
 class GuitarString:
+    ENERGY_DECAY_FACTOR = 0.996 #temporary, remove whenever this isnt needed anymore
+    
     def __init__(self, frequency: float):
         '''
         Create a guitar string of the given frequency, using a sampling rate of 24000 Hz
